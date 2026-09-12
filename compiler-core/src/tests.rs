@@ -144,6 +144,7 @@ fn all_files_have_copyright_notice() {
 
                 // Generated files
                 "toml" if file_name == "manifest.toml" => return None,
+                "lock" if file_name == "devenv.lock" => return None,
 
                 // Source files
                 "config" if file_name == "rebar.config" => (),
@@ -162,6 +163,10 @@ fn all_files_have_copyright_notice() {
                 "rs" => (),
                 "sh" => (),
                 "toml" => (),
+
+                // Devenv development environment
+                "yaml" if file_name == "devenv.yaml" => (),
+                "nix" if file_name == "devenv.nix" => (),
 
                 // HTML templates
                 "html" if path.starts_with("../compiler-core/templates/") => (),
